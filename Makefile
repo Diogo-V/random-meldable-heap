@@ -1,16 +1,15 @@
-CC = gcc
-debug_flags = -Wall -std=c++14 -g -lm
-compile_flags = -Wall -std=c++14 -g -lm
+compiler = gcc
+flags = -Wall -Wpedantic -Wextra -Werror=format-security -g -lm -O2
 
-source_code = ./src/*.c ./src/*.h
+source_code = ./src/*.c
 
 # Compiles everything
-c: src/main.cpp
-	$(CC) $(compile_flags) -o ./bin/main $(source_code)
+c: src/main.c
+	@$(compiler) $(flags) -o ./bin/main $(source_code)
 
 # Runs main algorithm
 r: c
-	./bin/main	
+	@./bin/main	
 
 # Cleans binaries
 clean:
